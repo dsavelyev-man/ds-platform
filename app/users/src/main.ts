@@ -9,10 +9,13 @@ async function bootstrap() {
     {
       transport: Transport.TCP,
       options: {
-        port: parseInt(process.env.MICROSERVICES_USERS_PORT),
+          host: "0.0.0.0",
+          port: parseInt(process.env.MICROSERVICES_USERS_PORT),
       },
     },
   );
+
+  console.log("sdassa")
 
   await app.listen();
 }

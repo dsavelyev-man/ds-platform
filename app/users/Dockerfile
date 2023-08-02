@@ -2,7 +2,7 @@ FROM node:18-alpine as development
 
 RUN apk --update add postgresql-client
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/service
 
 COPY package*.json ./
 
@@ -14,7 +14,7 @@ FROM node:18-alpine as production
 
 RUN apk --update add postgresql-client
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/service
 
 COPY package*.json ./
 
