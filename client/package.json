@@ -6,11 +6,16 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "docker:production": "npm run build && node .output/server/index.mjs",
+    "docker:development": "npm run dev"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.1",
-    "nuxt": "^3.6.5"
+    "autoprefixer": "^10.4.14",
+    "nuxt": "^3.6.5",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
   }
 }

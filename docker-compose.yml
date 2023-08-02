@@ -1,17 +1,18 @@
 version: "3.9"
 
 services:
-  app:
+  users-service:
     build:
-      context: ./api
+      context: ./app/users
       target: "${NODE_ENV}"
-    ports:
-      - "${API_PORT}:${API_PORT}"
+#    ports:
+#      - "${API_PORT}:${API_PORT}"
     entrypoint: ["npm", "run", "docker:${NODE_ENV}"]
     env_file:
       - .env
     volumes:
-      - ./api:/usr/src/api
+      - ./app/users:/usr/src/service
+      - /usr/src/service/node_modules
     networks:
       - app
   client:
@@ -21,12 +22,14 @@ services:
     restart: on-failure
     ports:
       - "${CLIENT_PORT}:${CLIENT_PORT}"
+      - "24678:24678"
     command: npm run docker:${NODE_ENV}
     env_file: .env
     environment:
       PORT: ${CLIENT_PORT}
     volumes:
       - ./client:/usr/src/client
+      - /usr/src/client/node_modules
   postgres:
     image: postgres:latest
     environment:
