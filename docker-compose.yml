@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: ./api
+      target: "${NODE_ENV}"
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    entrypoint: ["npm", "run", "docker:${NODE_ENV}"]
+    env_file:
+      - .env
+    volumes:
+      - ./api:/usr/src/api
+    networks:
+      - app
+  client:
+    build:
+      context: ./client
+      target: "${NODE_ENV}"
+    restart: on-failure
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    command: npm run docker:${NODE_ENV}
+    env_file: .env
+    environment:
+      PORT: ${CLIENT_PORT}
+    volumes:
+      - ./client:/usr/src/client
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    ports:
+      - "5432:5432"
+    networks:
+      - app
+    volumes:
+      - db:/var/lib/postgresql/data
+  pgadmin:
+    links:
+      - postgres:postgres
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    ports:
+      - "${PGADMIN_PORT}:80"
+    networks:
+      - app
+
+networks:
+  app:
+
+volumes:
+  db:
