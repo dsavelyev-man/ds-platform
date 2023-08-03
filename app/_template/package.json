@@ -13,7 +13,8 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "docker:development": "npm run start:dev",
-    "docker:production": "npm run build && npm run start"
+    "docker:production": "npm run build && npm run start",
+    "repl:dev": "npm run start:dev -- --entryFile repl"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",

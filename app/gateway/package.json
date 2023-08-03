@@ -13,7 +13,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "docker:development": "npm run start:dev",
-    "docker:production": "npm run build && npm run start"
+    "docker:production": "npm run build && npm run start",
   },
   "dependencies": {
     "@nestjs/cache-manager": "^2.1.0",
