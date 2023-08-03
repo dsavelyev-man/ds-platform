@@ -4,16 +4,16 @@ export default defineNuxtConfig({
 
   devServer: {
     port: parseInt(process.env.CLIENT_PORT || "1212"),
-    host: "0.0.0.0"
+    host: "0.0.0.0",
   },
 
   vite: {
     server: {
-      hmr: {
-        protocol: "ws",
-        host: "0.0.0.0"
-      }
-    }
+      // hmr: {
+      //   protocol: "ws",
+      //   host: "0.0.0.0"
+      // }
+    },
   },
 
   postcss: {
@@ -22,4 +22,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-})
+});
