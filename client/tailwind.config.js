@@ -9,8 +9,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        'violet': '0 35px 35px rgba(123, 44, 191, 0.5)',
+      },
       colors: {
-        violet: {
+        dark: "#070707",
+        "dark-grey": "#8881",
+        cviolet: {
           [900]: "#10002b",
           [800]: "#240046",
           [700]: "#3c096c",

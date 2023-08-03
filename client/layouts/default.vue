@@ -6,8 +6,6 @@
 import Navbar from "../components/ordinary/Navbar.vue";
 </script>
 
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<style lang="scss">
+@import "../scss/default.scss";
 </style>
