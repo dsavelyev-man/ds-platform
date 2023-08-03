@@ -12,7 +12,6 @@ services:
       - .env
     volumes:
       - ./app/gateway:/usr/src/gateway
-      - /usr/src/gateway/node_modules
     networks:
       - app
   users-service:
@@ -26,7 +25,6 @@ services:
       - .env
     volumes:
       - ./app/users:/usr/src/service
-      - /usr/src/service/node_modules
     networks:
       - app
   client:
@@ -43,7 +41,6 @@ services:
       PORT: ${CLIENT_PORT}
     volumes:
       - ./client:/usr/src/client
-      - /usr/src/client/node_modules
   postgres:
     image: postgres:latest
     environment:
@@ -56,6 +53,16 @@ services:
       - app
     volumes:
       - db:/var/lib/postgresql/data
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "${CACHE_REDIS_PORT}:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${CACHE_REDIS_PASSWORD}
+    networks:
+      - app
+    volumes:
+      - cache:/data
   pgadmin:
     links:
       - postgres:postgres
@@ -73,3 +80,4 @@ networks:
 
 volumes:
   db:
+  cache:
