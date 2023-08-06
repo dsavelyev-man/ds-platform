@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "docker:production": "npm run build && node .output/server/index.mjs",
+    "docker:production": "node .output/server/index.mjs",
     "docker:development": "npm run dev"
   },
   "devDependencies": {
