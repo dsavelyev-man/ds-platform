@@ -1,6 +1,37 @@
 version: "3.9"
 
 services:
+  gateway:
+    build:
+      dockerfile: ./apps/gateway/Dockerfile
+      context: ./backend
+      target: ${NODE_ENV}
+    command: "sh ./start.${NODE_ENV}.sh"
+    volumes:
+      - ./backend/apps/gateway:/usr/src/app/apps/gateway
+    environment:
+      - PROJECT=gateway
+    env_file:
+      - .env
+    ports:
+      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+    depends_on:
+      - postgres
+      - users-service
+  users-service:
+    build:
+      dockerfile: ./apps/users/Dockerfile
+      context: ./backend
+      target: ${NODE_ENV}
+    command: "sh ./start.${NODE_ENV}.sh"
+    volumes:
+      - ./backend/apps/users:/usr/src/app/apps/users
+    environment:
+      - PROJECT=users
+    env_file:
+      - .env
+    ports:
+      - "${MICROSERVICES_USERS_PORT}:${MICROSERVICES_USERS_PORT}"
   postgres:
     image: postgres:latest
     environment:
