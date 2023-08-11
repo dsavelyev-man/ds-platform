@@ -18,6 +18,8 @@ services:
     depends_on:
       - postgres
       - users-service
+    networks:
+      - app
   users-service:
     build:
       dockerfile: ./apps/users/Dockerfile
@@ -32,8 +34,10 @@ services:
       - .env
     ports:
       - "${MICROSERVICES_USERS_PORT}:${MICROSERVICES_USERS_PORT}"
+    networks:
+      - app
   postgres:
-    image: postgres:latest
+    image: postgres:15-alpine
     environment:
       POSTGRES_DB: "${POSTGRES_DB}"
       POSTGRES_USER: "${POSTGRES_USER}"
@@ -43,7 +47,7 @@ services:
     networks:
       - app
     volumes:
-      - db:/var/lib/postgresql/data
+      - ./db:/var/lib/postgresql/data
   cache:
     image: redis:6.2-alpine
     restart: always
@@ -57,7 +61,7 @@ services:
 
 networks:
   app:
+    driver: bridge
 
 volumes:
-  db:
   cache:

@@ -1,5 +1,7 @@
 FROM node:18-alpine As development
 
+RUN apk add postgresql
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -11,6 +13,8 @@ COPY . .
 RUN npm run build gateway
 
 FROM node:18-alpine as production
+
+RUN apk add postgresql
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
