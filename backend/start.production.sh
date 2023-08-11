@@ -1,3 +1,3 @@
 #!/bin/sh
 
-node ./dist/apps/$PROJECT/main
+sh wait-for-postgres.sh && node ./dist/apps/$PROJECT/main
