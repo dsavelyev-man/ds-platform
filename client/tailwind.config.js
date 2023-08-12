@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       dropShadow: {
-        'violet': '0 35px 35px rgba(123, 44, 191, 0.5)',
+        'violet': '0 10px 34px rgba(123, 44, 191, 0.5)',
       },
       colors: {
         dark: "#070707",

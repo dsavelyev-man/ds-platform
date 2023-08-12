@@ -1,15 +1,15 @@
 <template>
   <nav
-    class="backdrop-blur border-b border-b-cviolet-600 overflow-hidden sticky top-0"
+    class="backdrop-blur sticky top-0"
   >
     <Container class="h-[72px] px-2 flex items-center justify-between">
       <Logo />
       <div class="flex gap-2">
         <NuxtLink to="/sign-in" class="rounded-xl">
-          <Button class="focus:drop-shadow-violet"> Войти </Button>
+          <Button variant="link"> Войти </Button>
         </NuxtLink>
         <NuxtLink to="/sign-up" class="rounded-xl">
-          <Button class="focus:drop-shadow-violet"> Зарегистрироваться </Button>
+          <Button> Зарегистрироваться </Button>
         </NuxtLink>
       </div>
     </Container>
