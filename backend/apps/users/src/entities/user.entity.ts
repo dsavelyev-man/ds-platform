@@ -5,7 +5,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { BaseColumnsEntity } from '@app/common';
+import { BaseColumnsEntity } from '../../../../database/BaseColumnsEntity';
 
 @Entity()
 export class User extends BaseColumnsEntity {

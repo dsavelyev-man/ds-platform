@@ -1,2 +1,2 @@
-export * from './other/BaseColumnsEntity';
+export * from '../../../database/BaseColumnsEntity';
 export * from './filters/rpc.validator.filter';

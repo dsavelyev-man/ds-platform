@@ -1,7 +1,8 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { UsersModule } from './users.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { RpcValidationFilter } from '@app/common';
+import { ClassSerializerInterceptor } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -16,6 +17,7 @@ async function bootstrap() {
   );
 
   app.useGlobalFilters(new RpcValidationFilter());
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   await app.listen();
 

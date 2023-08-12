@@ -1,9 +1,4 @@
-import {
-  ClassSerializerInterceptor,
-  Controller,
-  Get,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -23,7 +18,6 @@ export class UsersController {
   }
 
   @MessagePattern('create')
-  @UseInterceptors(ClassSerializerInterceptor)
   create(@Payload() payload: CreateUserDto) {
     return this.usersService.create(payload);
   }

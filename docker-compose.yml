@@ -9,6 +9,7 @@ services:
     command: "sh ./start.${NODE_ENV}.sh"
     volumes:
       - ./backend/apps/gateway:/usr/src/app/apps/gateway
+      - ./backend/database/migrations:/usr/src/app/database/migrations
     environment:
       - PROJECT=gateway
     env_file:
