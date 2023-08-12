@@ -4,6 +4,7 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { genSaltSync, hashSync } from 'bcryptjs';
+import { GetAuthTokenDto } from './dto/get-auth-token.dto';
 
 @Injectable()
 export class UsersService {
@@ -33,5 +34,13 @@ export class UsersService {
     });
 
     return user.save();
+  }
+
+  async getAuthToken(data: GetAuthTokenDto) {
+    const user = await this.usersRepository.findOneBy({
+      email: data.email,
+    });
+
+    return user;
   }
 }
