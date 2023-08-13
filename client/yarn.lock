@@ -344,6 +344,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@heroicons/vue@^2.0.18":
+  version "2.0.18"
+  resolved "https://registry.npmjs.org/@heroicons/vue/-/vue-2.0.18.tgz"
+  integrity sha512-BcTC9nq2TkwNSfQuqo96J7ehx4etezypc2YeTq7KsXWxrcrerhkgjLrxGRBnStN0wrXo0Gv4BInybqz5uBG6Cw==
+
 "@ioredis/commands@^1.1.1":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@ioredis/commands/-/commands-1.2.0.tgz"
@@ -5838,7 +5843,7 @@ vue-router@^4.1.0, vue-router@^4.2.4:
   dependencies:
     "@vue/devtools-api" "^6.5.0"
 
-"vue@^2.7.0 || ^3.2.25", vue@^3.0.0, vue@^3.2.0, vue@^3.2.25, vue@^3.3.4, "vue@>=2.7 || >=3", vue@3.3.4:
+"vue@^2.7.0 || ^3.2.25", vue@^3.0.0, vue@^3.2.0, vue@^3.2.25, vue@^3.3.4, "vue@>= 3", "vue@>=2.7 || >=3", vue@3.3.4:
   version "3.3.4"
   resolved "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   integrity sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==
